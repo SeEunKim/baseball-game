@@ -56,4 +56,32 @@ public class MainTest {
         assertThat(score.strikes()).isEqualTo(s);
         assertThat(score.balls()).isEqualTo(b);
     }
+
+    @Test
+    public void allballs() {
+        Game game = new Game(123);
+        assertMatch(game.guess(231), 0, 3);
+        assertMatch(game.guess(312), 0, 3);
+    }
+
+    @Test
+    public void someballs() {
+        Game game = new Game(123);
+        assertMatch(game.guess(345), 0, 1);
+        assertMatch(game.guess(736), 0, 1);
+        assertMatch(game.guess(561), 0, 1);
+
+        assertMatch(game.guess(235), 0, 2);
+        assertMatch(game.guess(316), 0, 2);
+    }
+
+    @Test
+    public void someStrikesAndBalls() {
+        Game game = new Game(357);
+        assertMatch(game.guess(375), 1, 2);
+        assertMatch(game.guess(753), 1, 2);
+        assertMatch(game.guess(537), 1, 2);
+    }
+
+
 }

@@ -18,9 +18,21 @@ public class Game {
             if (pos(value, v) == pos(guess, v)) {
                 scnt += 1;
             }
-
         }
-        return Score.create(scnt, 0);
+
+        int bcnt = 0;
+        for (int v = 1; v <= 3; v++) {
+            if (pos(value, 1) == pos(guess, v)) {
+                bcnt += 1;
+            }
+            if (pos(value, 2) == pos(guess, v)) {
+                bcnt += 1;
+            }
+            if (pos(value, 3) == pos(guess, v)) {
+                bcnt += 1;
+            }
+        }
+        return Score.create(scnt, bcnt - scnt);
     }
 
     private int pos(int value, int pos) {
