@@ -13,12 +13,21 @@ public class Game {
 
     public Score guess(int guess) {
         int scnt = 0;
+        int bcnt = 0;
         for (int i = 1; i <= 3; i++) {
             if (pos(value, i) == pos(guess, i)) {
                 scnt += 1;
             }
         }
-        return new Score(scnt, 0);
+
+        for (int i = 1; i <= 3 ; i++) {
+            for (int j = 1; j <=3 ; j++) {
+                if (pos(value, i) == pos(guess, j)) {
+                    bcnt += 1;
+                }
+            }
+        }
+        return new Score(scnt, bcnt - scnt);
     }
 
     private int pos(int value, int pos) {
