@@ -35,4 +35,21 @@ public class GameTest {
         assertThat(s.strikes()).isEqualTo(3);
         assertThat(s.balls()).isEqualTo(0);
     }
+
+    @Test
+    public void someStrikes() {
+        Game game = new Game(123);
+        assertSomeMatch(game.guess(156), 1, 0);
+        assertSomeMatch(game.guess(925), 1, 0);
+        assertSomeMatch(game.guess(983), 1, 0);
+
+        assertSomeMatch(game.guess(129), 2, 0);
+        assertSomeMatch(game.guess(823), 2, 0);
+
+
+    }
+    private void assertSomeMatch(Score score, int s, int b) {
+        assertThat(score.strikes()).isEqualTo(s);
+        assertThat(score.balls()).isEqualTo(b);
+    }
 }
